@@ -1,4 +1,4 @@
-public class Juego {
+public abstract class Juego {
     private int vidas;
     private int vidasInicial;
     private int record=0;
@@ -15,12 +15,18 @@ public class Juego {
         return vidas;
     }
 
-    public int quitaVida(){
+    public boolean quitaVida(){
         vidas--;
-        if(vidas<1){
+        if(vidas==0){
             System.out.println("Juego Terminado");
+            return false;
         }
-        return vidas;
+        else {
+            System.out.println("El número de vidas restantes son: "+vidas);
+
+            System.out.println("Por favor vuelva a intentarlo");
+            return true;
+        }
     }
 
     public void reiniciaPartida(){
@@ -36,6 +42,8 @@ public class Juego {
             System.out.println("Se ha batido el record, el nuevo valor es "+record);
         }
     }
+
+    public abstract void juega();
 
 }
 
